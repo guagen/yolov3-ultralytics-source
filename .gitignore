@@ -1,0 +1,8 @@
+data/coco/
+__pycache__/
+weights/
+
+*.bmp
+*.jpg
+*.png
+*.pt
