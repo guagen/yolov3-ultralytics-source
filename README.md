@@ -1,4 +1,4 @@
-This project is form Ultralytics. Thank very much for her excellent work.  test
+This project is form Ultralytics. Thank for her excellent work. 
 
 # Introduction
 
