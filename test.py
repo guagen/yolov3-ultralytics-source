@@ -20,7 +20,7 @@ def test(
     # Configure run
     data_cfg_dict = parse_data_cfg(data_cfg)
     nC = int(data_cfg_dict['classes'])  # number of classes (80 for COCO)
-    test_path = data_cfg_dict['valid']
+    test_path = data_cfg_dict['val']
 
     # Initialize model
     model = Darknet(cfg, img_size)
