@@ -18,6 +18,7 @@ def train(
         multi_scale=False,
         freeze_backbone=False,
         var=0,
+        chose_cls_loss='softmax'
 ):
     weights = 'weights' + os.sep
     latest = weights + 'latest.pt'
@@ -33,7 +34,7 @@ def train(
     train_path = parse_data_cfg(data_cfg)['train']
 
     # Initialize model
-    model = Darknet(cfg, img_size)
+    model = Darknet(cfg, img_size,chose_cls_loss)
 
     # Get dataloader
     dataloader = LoadImagesAndLabels(train_path, batch_size, img_size, multi_scale=multi_scale, augment=True)
@@ -186,6 +187,7 @@ if __name__ == '__main__':
     parser.add_argument('--img-size', type=int, default=512, help='pixels')
     parser.add_argument('--resume', action='store_true', help='resume training flag')
     parser.add_argument('--var', type=float, default=0, help='test variable')
+    parser.add_argument('--chose_cls_loss', type=str, default='focalloss', help='chose which loss function in cls')#选择哪种分类损失函数，可选的有logistic，softmax，focalloss
     opt = parser.parse_args()
     print(opt, end='\n\n')
 
@@ -201,4 +203,5 @@ if __name__ == '__main__':
         accumulated_batches=opt.accumulated_batches,
         multi_scale=opt.multi_scale,
         var=opt.var,
+        chose_cls_loss=opt.chose_cls_loss,
     )

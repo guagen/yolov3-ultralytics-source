@@ -9,7 +9,7 @@ from utils.utils import *
 ONNX_EXPORT = False
 
 
-def create_modules(module_defs):
+def create_modules(module_defs,chose_cls_loss='softmax'):
     """
     Constructs module list of layer blocks from module configuration in module_defs
     """
@@ -67,7 +67,7 @@ def create_modules(module_defs):
             nC = int(module_def['classes'])  # number of classes
             img_size = int(hyperparams['height'])
             # Define detection layer
-            yolo_layer = YOLOLayer(anchors, nC, img_size, yolo_layer_count, cfg=hyperparams['cfg'])
+            yolo_layer = YOLOLayer(anchors, nC, img_size, yolo_layer_count, cfg=hyperparams['cfg'],chose_cls_loss=chose_cls_loss)
             modules.add_module('yolo_%d' % i, yolo_layer)
             yolo_layer_count += 1
 
@@ -101,7 +101,7 @@ class Upsample(nn.Module):
 
 
 class YOLOLayer(nn.Module):
-    def __init__(self, anchors, nC, img_size, yolo_layer, cfg):
+    def __init__(self, anchors, nC, img_size, yolo_layer, cfg, chose_cls_loss='softmax'):
         super(YOLOLayer, self).__init__()
 
         nA = len(anchors)
@@ -109,6 +109,7 @@ class YOLOLayer(nn.Module):
         self.nA = nA  # number of anchors (3)
         self.nC = nC  # number of classes (80)(default)
         self.img_size = 0
+        self.chose_cls_loss = chose_cls_loss
         # self.coco_class_weights = coco_class_weights()
 
         if ONNX_EXPORT:  # grids must be computed in __init__
@@ -142,10 +143,14 @@ class YOLOLayer(nn.Module):
 
         # Training
         if targets is not None:
-            MSELoss = nn.MSELoss()
+            MSELoss = nn.MSELoss()#选择边框预测loss
             BCEWithLogitsLoss = nn.BCEWithLogitsLoss()
-            CrossEntropyLoss = nn.CrossEntropyLoss()
-            FL = FocalLoss(class_num=self.nC, gamma=2)#新加入focalloss, 此处的gamma等于2是默认值
+            if(self.chose_cls_loss=='softmax'):
+                cls_loss=nn.CrossEntropyLoss()
+            elif(self.chose_cls_loss=='logistic'):
+                cls_loss=nn.BCEWithLogitsLoss()
+            elif(self.chose_cls_loss=='focalloss'):
+                cls_loss=FocalLoss(class_num=self.nC, gamma=2)#新加入focalloss, 此处的gamma等于2是默认值
 
             # Get outputs
             p_conf = p[..., 4]  # Conf
@@ -166,11 +171,9 @@ class YOLOLayer(nn.Module):
                 lwh = k * MSELoss(wh[mask], twh[mask])
 
                 #lcls = (k / 4) * CrossEntropyLoss(p_cls[mask], torch.argmax(tcls, 1))#此为原始的交叉熵损失函数，也就是softmax
-
                 #lcls = (k * 10) * BCEWithLogitsLoss(p_cls[mask], tcls.float())#此为原始的logistics损失函数，一开始是k*10
-                #lcls = (k /4) * BCEWithLogitsLoss(p_cls[mask], tcls.float())#将k*10改为k/4以便与交叉熵损失保持一致
 
-                lcls = (k / 4) * FL(p_cls[mask], torch.argmax(tcls, 1))#在分类中使用focalloss
+                lcls=(k / 4) *cls_loss(p_cls[mask], torch.argmax(tcls, 1))
             else:
                 FT = torch.cuda.FloatTensor if p.is_cuda else torch.FloatTensor
                 lxy, lwh, lcls, lconf = FT([0]), FT([0]), FT([0]), FT([0])
@@ -218,13 +221,13 @@ class YOLOLayer(nn.Module):
 class Darknet(nn.Module):
     """YOLOv3 object detection model"""
 
-    def __init__(self, cfg_path, img_size=416):
+    def __init__(self, cfg_path, img_size=416,chose_cls_loss='softmax'):
         super(Darknet, self).__init__()
 
         self.module_defs = parse_model_cfg(cfg_path)
         self.module_defs[0]['cfg'] = cfg_path
         self.module_defs[0]['height'] = img_size#this change image size from default to special
-        self.hyperparams, self.module_list = create_modules(self.module_defs)
+        self.hyperparams, self.module_list = create_modules(self.module_defs,chose_cls_loss)
         self.img_size = img_size
         self.loss_names = ['loss', 'xy', 'wh', 'conf', 'cls', 'nT']
         self.losses = []
