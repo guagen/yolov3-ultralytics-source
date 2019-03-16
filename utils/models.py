@@ -2,7 +2,7 @@ import os
 from collections import defaultdict
 
 import torch.nn as nn
-
+from utils.FocalLoss import *
 from utils.parse_config import *
 from utils.utils import *
 
@@ -145,6 +145,7 @@ class YOLOLayer(nn.Module):
             MSELoss = nn.MSELoss()
             BCEWithLogitsLoss = nn.BCEWithLogitsLoss()
             CrossEntropyLoss = nn.CrossEntropyLoss()
+            FL = FocalLoss(class_num=self.nC, gamma=2)#新加入focalloss, 此处的gamma等于2是默认值
 
             # Get outputs
             p_conf = p[..., 4]  # Conf
@@ -164,14 +165,17 @@ class YOLOLayer(nn.Module):
                 lxy = k * MSELoss(xy[mask], txy[mask])
                 lwh = k * MSELoss(wh[mask], twh[mask])
 
-                lcls = (k / 4) * CrossEntropyLoss(p_cls[mask], torch.argmax(tcls, 1))
-                # lcls = (k * 10) * BCEWithLogitsLoss(p_cls[mask], tcls.float())
+                #lcls = (k / 4) * CrossEntropyLoss(p_cls[mask], torch.argmax(tcls, 1))#此为原始的交叉熵损失函数，也就是softmax
+
+                #lcls = (k * 10) * BCEWithLogitsLoss(p_cls[mask], tcls.float())#此为原始的logistics损失函数，一开始是k*10
+                #lcls = (k /4) * BCEWithLogitsLoss(p_cls[mask], tcls.float())#将k*10改为k/4以便与交叉熵损失保持一致
+
+                lcls = (k / 4) * FL(p_cls[mask], torch.argmax(tcls, 1))#在分类中使用focalloss
             else:
                 FT = torch.cuda.FloatTensor if p.is_cuda else torch.FloatTensor
                 lxy, lwh, lcls, lconf = FT([0]), FT([0]), FT([0]), FT([0])
 
             lconf = (k * 64) * BCEWithLogitsLoss(p_conf, mask.float())
-
             # Sum loss components
             loss = lxy + lwh + lconf + lcls
 
