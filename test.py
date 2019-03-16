@@ -1,6 +1,6 @@
 import argparse
 
-from models import *
+from utils.models import *
 from utils.datasets import *
 from utils.utils import *
 
