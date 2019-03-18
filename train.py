@@ -1,11 +1,22 @@
 import argparse
 import time
-
 import test  # Import test.py to get mAP after each epoch
 from utils.models import *
 from utils.datasets import *
 from utils.utils import *
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--epochs', type=int, default=100, help='number of epochs')
+parser.add_argument('--batch-size', type=int, default=4, help='size of each image batch')
+parser.add_argument('--img-size', type=int, default=512, help='pixels')
+parser.add_argument('--chose_cls_loss', type=str, default='focalloss',help='chose which loss function in cls')  # 可选的有logistic，softmax，focalloss
+parser.add_argument('--resume', action='store_true', help='resume training flag')
+parser.add_argument('--cfg', type=str, default='cfg/yolov3.cfg', help='cfg file path')
+parser.add_argument('--data-cfg', type=str, default='cfg/coco.data', help='coco.data file path')
+parser.add_argument('--multi-scale', action='store_true', help='random image sizes per batch 320 - 608')
+parser.add_argument('--accumulated-batches', type=int, default=1, help='number of batches before optimizer step')
+parser.add_argument('--var', type=float, default=0, help='test variable')
+opt = parser.parse_args()
 
 def train(
         cfg,
@@ -177,20 +188,7 @@ def train(
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--epochs', type=int, default=100, help='number of epochs')
-    parser.add_argument('--batch-size', type=int, default=4, help='size of each image batch')
-    parser.add_argument('--accumulated-batches', type=int, default=1, help='number of batches before optimizer step')
-    parser.add_argument('--cfg', type=str, default='cfg/yolov3.cfg', help='cfg file path')
-    parser.add_argument('--data-cfg', type=str, default='cfg/coco.data', help='coco.data file path')
-    parser.add_argument('--multi-scale', action='store_true', help='random image sizes per batch 320 - 608')
-    parser.add_argument('--img-size', type=int, default=512, help='pixels')
-    parser.add_argument('--resume', action='store_true', help='resume training flag')
-    parser.add_argument('--var', type=float, default=0, help='test variable')
-    parser.add_argument('--chose_cls_loss', type=str, default='focalloss', help='chose which loss function in cls')#选择哪种分类损失函数，可选的有logistic，softmax，focalloss
-    opt = parser.parse_args()
     print(opt, end='\n\n')
-
     init_seeds()
 
     train(

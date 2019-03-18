@@ -4,6 +4,17 @@ from utils.models import *
 from utils.datasets import *
 from utils.utils import *
 
+parser = argparse.ArgumentParser(prog='test.py')
+parser.add_argument('--batch-size', type=int, default=12, help='size of each image batch')
+parser.add_argument('--weights', type=str, default='weights/best.pt', help='path to weights file')
+parser.add_argument('--iou-thres', type=float, default=0.5, help='iou threshold required to qualify as detected')
+parser.add_argument('--conf-thres', type=float, default=0.3, help='object confidence threshold')
+parser.add_argument('--nms-thres', type=float, default=0.45, help='iou threshold for non-maximum suppression')
+parser.add_argument('--img-size', type=int, default=512, help='size of each image dimension')
+parser.add_argument('--cfg', type=str, default='cfg/yolov3.cfg', help='cfg file path')
+parser.add_argument('--data-cfg', type=str, default='cfg/coco.data', help='coco.data file path')
+parser.add_argument('--test', type=bool, default=True, help='chose test rather than valid')
+opt = parser.parse_args()
 
 def test(
         cfg,
@@ -13,14 +24,21 @@ def test(
         img_size=416,
         iou_thres=0.5,
         conf_thres=0.3,
-        nms_thres=0.45
+        nms_thres=0.45,
+        test=False
 ):
     device = torch_utils.select_device()
 
     # Configure run
     data_cfg_dict = parse_data_cfg(data_cfg)
     nC = int(data_cfg_dict['classes'])  # number of classes (80 for COCO)
-    test_path = data_cfg_dict['valid']
+
+    if test:
+        test_path = data_cfg_dict['test']
+        print('使用测试数据集')
+    else:
+        test_path = data_cfg_dict['valid']
+        print('使用验证数据集')
 
     # Initialize model
     model = Darknet(cfg, img_size)
@@ -87,6 +105,7 @@ def test(
                         correct.append(0)
 
             # Compute Average Precision (AP) per class
+            #计算每张图片每个类的ap数值，需要指出的是这种算法不对
             AP, AP_class, R, P = ap_per_class(tp=correct,
                                               conf=detections[:, 4],
                                               pred_cls=detections[:, 6],
@@ -121,16 +140,6 @@ def test(
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(prog='test.py')
-    parser.add_argument('--batch-size', type=int, default=12, help='size of each image batch')
-    parser.add_argument('--cfg', type=str, default='cfg/yolov3.cfg', help='cfg file path')
-    parser.add_argument('--data-cfg', type=str, default='cfg/coco.data', help='coco.data file path')
-    parser.add_argument('--weights', type=str, default='weights/best.pt', help='path to weights file')
-    parser.add_argument('--iou-thres', type=float, default=0.5, help='iou threshold required to qualify as detected')
-    parser.add_argument('--conf-thres', type=float, default=0.3, help='object confidence threshold')
-    parser.add_argument('--nms-thres', type=float, default=0.45, help='iou threshold for non-maximum suppression')
-    parser.add_argument('--img-size', type=int, default=512, help='size of each image dimension')
-    opt = parser.parse_args()
     print(opt, end='\n\n')
 
     with torch.no_grad():
@@ -142,7 +151,8 @@ if __name__ == '__main__':
             opt.img_size,
             opt.iou_thres,
             opt.conf_thres,
-            opt.nms_thres
+            opt.nms_thres,
+            test=opt.test
         )
 
 #       Image      Total          P          R        mAP  # YOLOv3 320
