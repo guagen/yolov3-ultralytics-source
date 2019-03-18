@@ -1,0 +1,43 @@
+
+开始训练，当前时间：2019-03-18 15:48:03
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
+开始训练，当前时间：2019-03-18 15:48:13
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time---
+开始训练，当前时间：2019-03-18 15:49:45
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
+---
+开始训练，当前时间：2019-03-18 15:50:05
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
+---
+开始训练，当前时间：2019-03-18 15:50:48
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
+---
+开始训练，当前时间：2019-03-18 15:54:55
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
+结束训练，当前时间：2019-03-18 15:57:19
+---
+开始训练，当前时间：2019-03-18 15:57:41
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
+---
+开始训练，当前时间：2019-03-18 16:27:16
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch       xy       wh     conf      clstotal_loss nTargets     time
+---
+开始训练，当前时间：2019-03-18 16:28:42
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time
+---
+开始训练，当前时间：2019-03-18 16:53:02
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-18 17:16:27
+学习率=0.001，图片尺寸=512，分类loss=focalloss
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP

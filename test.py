@@ -6,7 +6,7 @@ from utils.utils import *
 
 parser = argparse.ArgumentParser(prog='test.py')
 parser.add_argument('--batch-size', type=int, default=12, help='size of each image batch')
-parser.add_argument('--weights', type=str, default='weights/best.pt', help='path to weights file')
+parser.add_argument('--weights', type=str, default='weights/best_old.pt', help='path to weights file')
 parser.add_argument('--iou-thres', type=float, default=0.5, help='iou threshold required to qualify as detected')
 parser.add_argument('--conf-thres', type=float, default=0.3, help='object confidence threshold')
 parser.add_argument('--nms-thres', type=float, default=0.45, help='iou threshold for non-maximum suppression')
@@ -132,11 +132,14 @@ def test(
     print('%11s' * 5 % ('Image', 'Total', 'P', 'R', 'mAP') + '\n\nmAP Per Class:')
 
     classes = load_classes(data_cfg_dict['names'])  # Extracts class labels from file
+    # 定义一个old_mAP,为所有类比ap的求和再平均；原有ap的计算公式都有误，故此处的old_mAP本质上也是错的，等待原code作者修改ap计算公式
+    old_mAP=0
     for i, c in enumerate(classes):
         print('%15s: %-.4f' % (c, AP_accum[i] / (AP_accum_count[i] + 1E-16)))
-
+        old_mAP+=AP_accum[i] / (AP_accum_count[i] + 1E-16)
+    print('old_mAP=%-.4f'%(old_mAP/nC))
     # Return mAP
-    return mean_mAP, mean_R, mean_P
+    return old_mAP/nC,mean_mAP, mean_R, mean_P
 
 
 if __name__ == '__main__':

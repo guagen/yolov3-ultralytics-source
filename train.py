@@ -6,8 +6,9 @@ from utils.datasets import *
 from utils.utils import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--epochs', type=int, default=100, help='number of epochs')
+parser.add_argument('--epochs', type=int, default=1, help='number of epochs')
 parser.add_argument('--batch-size', type=int, default=4, help='size of each image batch')
+parser.add_argument('--lr', type=int, default=0.001, help='learning rate')
 parser.add_argument('--img-size', type=int, default=512, help='pixels')
 parser.add_argument('--chose_cls_loss', type=str, default='focalloss',help='chose which loss function in cls')  # 可选的有logistic，softmax，focalloss
 parser.add_argument('--resume', action='store_true', help='resume training flag')
@@ -29,11 +30,14 @@ def train(
         multi_scale=False,
         freeze_backbone=False,
         var=0,
-        chose_cls_loss='softmax'
+        chose_cls_loss='softmax',
+        lr0=0.001
 ):
     weights = 'weights' + os.sep
     latest = weights + 'latest.pt'
-    best = weights + 'best.pt'
+    best_loss_model = weights + 'best_loss_model.pt'
+    best_old_mAP_model = weights + 'best_old_mAP_model.pt'
+    best_new_mAP_model = weights + 'best_new_mAP_model.pt'
     device = torch_utils.select_device()
 
     if multi_scale:  # pass maximum multi_scale size
@@ -50,7 +54,6 @@ def train(
     # Get dataloader
     dataloader = LoadImagesAndLabels(train_path, batch_size, img_size, multi_scale=multi_scale, augment=True)
 
-    lr0 = 0.001
     cutoff = -1  # backbone reaches to cutoff layer
     start_epoch = 0
     best_loss = float('inf')
@@ -97,17 +100,25 @@ def train(
     # Set scheduler
     # scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[54, 61], gamma=0.1)
 
-    model_info(model)
+    #model_info(model)#打印网络结构，默认注释，有需要时开启
     t0 = time.time()
+    #在一开始训练时向results.txt写入训练开始的时间，参数
+    begtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    with open('results.txt', 'a') as file:
+        print('开始训练，当前时间：%s\n' % (begtime))
+        file.write('---\n')
+        file.write('开始训练，当前时间：%s\n'%(begtime))
+        file.write('学习率=%s，图片尺寸=%s，分类loss=%s\n' % (lr0,img_size,chose_cls_loss))
+        file.write(('%8s%12s' + '%10s' * 11+'\n') % ('Epoch', 'Batch', 'xy', 'wh', 'conf', 'cls', 't_loss', 'nTargets', 'time','P','R','new_mAP','old_mAP'))
+
+    best_old_mAP=0
+    best_new_mAP=0
     for epoch in range(epochs):
         epoch += start_epoch
-
-        print(('%8s%12s' + '%10s' * 7) % (
-            'Epoch', 'Batch', 'xy', 'wh', 'conf', 'cls', 'total', 'nTargets', 'time'))
-
+        print(('%8s%12s' + '%10s' * 7+'\n') % (
+            'Epoch', 'Batch', 'xy', 'wh', 'conf', 'cls', 't_loss', 'nTargets', 'time'))
         # Update scheduler (automatic)
         # scheduler.step()
-
         # Update scheduler (manual)  at 0, 54, 61 epochs to 1e-3, 1e-4, 1e-5
         if epoch > 80:
             lr = lr0 / 10
@@ -172,7 +183,7 @@ def train(
 
         # Save best checkpoint
         if best_loss == loss_per_target:
-            os.system('cp ' + latest + ' ' + best)
+            os.system('cp ' + latest + ' ' + best_loss_model)
 
         # Save backup weights every 5 epochs (optional)
         # if (epoch > 0) & (epoch % 5 == 0):
@@ -180,12 +191,23 @@ def train(
 
         # Calculate mAP
         with torch.no_grad():
-            mAP, R, P = test.test(cfg, data_cfg, weights=latest, batch_size=batch_size, img_size=img_size)
-
+            old_mAP,new_mAP, R, P = test.test(cfg, data_cfg, weights=latest, batch_size=batch_size, img_size=img_size)
+        if old_mAP>best_old_mAP:#寻找最好的old_map并保存
+            best_old_mAP=old_mAP
+            os.system('cp ' + latest + ' ' + best_old_mAP_model)
+        if new_mAP>best_new_mAP:#寻找最好的new_map并保存
+            best_new_mAP=new_mAP
+            os.system('cp ' + latest + ' ' + best_new_mAP_model)
         # Write epoch results
         with open('results.txt', 'a') as file:
-            file.write(s + '%11.3g' * 3 % (mAP, P, R) + '\n')
-
+            file.write(s + '%-.4f' * 4 % (P,R,new_mAP,old_mAP) + '\n')
+            file.write(('%8s%12s' + '%10s' * 11 + '\n') % ('Epoch', 'Batch', 'xy', 'wh', 'conf', 'cls', 't_loss', 'nTargets', 'time', 'P', 'R', 'new_mAP', 'old_mAP'))
+    print('best_old_mAP=%-.4f,best_new_mAP=%-.4f'%(best_old_mAP,best_new_mAP))#输出最好的map(old/new)
+    endtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    print('结束训练，当前时间：%s\n' % (endtime))
+    with open('results.txt', 'a') as file:
+        file.write('best_old_mAP=%-.4f,best_new_mAP=%-.4f'%(best_old_mAP,best_new_mAP)+ '\n')#写入最好的map(old/new)
+        file.write('结束训练，当前时间：%s\n' % (endtime))
 
 if __name__ == '__main__':
     print(opt, end='\n\n')
@@ -202,4 +224,5 @@ if __name__ == '__main__':
         multi_scale=opt.multi_scale,
         var=opt.var,
         chose_cls_loss=opt.chose_cls_loss,
+        lr0=opt.lr
     )
