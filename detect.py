@@ -10,7 +10,7 @@ from utils.utils import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--cfg', type=str, default='cfg/yolov3.cfg', help='cfg file path')
-parser.add_argument('--weights', type=str, default='weights/best.pt', help='path to weights file')
+parser.add_argument('--weights', type=str, default='weights/best_old.pt', help='path to weights file')
 parser.add_argument('--images', type=str, default='data/samples', help='path to images')
 parser.add_argument('--img-size', type=int, default=512, help='size of each image dimension')
 parser.add_argument('--conf-thres', type=float, default=0.50, help='object confidence threshold')
@@ -57,7 +57,7 @@ def detect(
     # Get classes and colors
     classes = load_classes(parse_data_cfg('cfg/coco.data')['names'])
     colors = [[random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)] for _ in range(len(classes))]
-
+    fps_time=[]
     for i, (path, img, im0) in enumerate(dataloader):
         t = time.time()
         if webcam:
@@ -77,7 +77,7 @@ def detect(
         if len(pred) > 0:
             # Run NMS on predictions
             detections = non_max_suppression(pred.unsqueeze(0), conf_thres, nms_thres)[0]
-
+            fps_time.append(time.time()-t)
             # Rescale boxes from 416 to true image size
             detections[:, :4] = scale_coords(img_size, detections[:, :4], im0.shape)
 
@@ -106,7 +106,8 @@ def detect(
 
         if webcam:  # Show live webcam
             cv2.imshow(weights, im0)
-
+    fps=1.0/(sum(fps_time)/len(fps_time))
+    print('fps:%.4f'%(fps))
     if save_images and (platform == 'darwin'):  # linux/macos
         os.system('open ' + output + ' ' + save_path)
 
