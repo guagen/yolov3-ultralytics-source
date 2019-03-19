@@ -1,43 +1,207 @@
-
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 15:48:03
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 15:48:13
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time---
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 15:49:45
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
+Ôªø
 ---
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 15:50:05
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
----
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 15:50:48
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
----
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 15:54:55
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
-Ω· ¯—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 15:57:19
----
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 15:57:41
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch        xy        wh      conf       clstotal_loss  nTargets      time
----
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 16:27:16
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch       xy       wh     conf      clstotal_loss nTargets     time
----
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 16:28:42
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
-   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time
----
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 16:53:02
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
+ÂºÄÂßãËÆ≠ÁªÉÔºåÂΩìÂâçÊó∂Èó¥Ôºö2019-03-18 19:16:32
+Â≠¶‰π†Áéá=0.001ÔºåÂõæÁâáÂ∞∫ÂØ∏=512ÔºåÂàÜÁ±ªloss=focalloss
    Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
----
-ø™ º—µ¡∑£¨µ±«∞ ±º‰£∫2019-03-18 17:16:27
-—ßœ∞¬ =0.001£¨Õº∆¨≥ﬂ¥Á=512£¨∑÷¿‡loss=focalloss
+    0/99       44/44      0.27      1.61       136     0.467       138        12      4.470.00080.11040.00320.0032
    Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    1/99       44/44     0.253     0.654      5.79     0.294         7        25     0.3760.21900.13090.11920.0770
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    2/99       44/44     0.237     0.331      1.19      0.22      1.97        16     0.3280.27890.28070.24850.1203
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    3/99       44/44     0.222     0.244     0.998     0.199      1.66        23     0.3890.36250.31580.28850.1464
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    4/99       44/44     0.209     0.187     0.868     0.179      1.44        15     0.4270.35450.39780.34500.1982
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    5/99       44/44     0.191     0.169      0.79     0.166      1.32        21     0.2890.38310.47710.42200.2459
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    6/99       44/44     0.177     0.153     0.745      0.16      1.24        22     0.3320.49600.52310.49300.3018
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    7/99       44/44     0.164     0.142     0.701     0.147      1.15        11     0.2850.44720.56720.53300.3532
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    8/99       44/44     0.153     0.131     0.657     0.145      1.09        15     0.2920.51960.56320.53130.3528
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+    9/99       44/44      0.14     0.125     0.624     0.133      1.02        18     0.3070.46010.50830.45760.3199
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   10/99       44/44     0.133     0.114     0.601     0.124     0.972        22     0.2880.50210.53260.50130.3821
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   11/99       44/44     0.126     0.109     0.585     0.116     0.936         8     0.3350.54470.61110.58180.4132
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   12/99       44/44     0.116     0.107     0.552     0.114     0.889        14     0.4010.57000.60830.57640.4084
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   13/99       44/44     0.113     0.102     0.566     0.102     0.884        15     0.2990.57390.62280.59220.4418
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   14/99       44/44     0.109     0.109     0.532     0.104     0.854        13     0.3010.55490.64870.61850.4419
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   15/99       44/44     0.103    0.0963     0.518     0.095     0.811        14      0.320.56910.65450.62560.4765
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   16/99       44/44     0.101    0.0888     0.492    0.0923     0.774        31     0.3640.61950.67840.65260.5098
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   17/99       44/44     0.102    0.0931     0.495    0.0874     0.777        15     0.3030.56970.65220.62060.4399
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   18/99       44/44    0.0992    0.0881     0.451    0.0853     0.724        17     0.3290.61640.66940.63790.4930
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   19/99       44/44    0.0923    0.0902     0.469    0.0773     0.729        13     0.3440.62270.65520.63040.4769
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   20/99       44/44    0.0932     0.101     0.469    0.0782     0.742        20     0.3180.59510.67620.64280.5095
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   21/99       44/44    0.0891    0.0805     0.439    0.0697     0.678        26       0.30.57810.67160.64080.4581
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   22/99       44/44    0.0885    0.0806     0.447    0.0687     0.684        22     0.2870.54870.67680.63670.4840
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   23/99       44/44    0.0858    0.0861     0.431    0.0643     0.667        20     0.3120.56460.68760.65580.5126
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   24/99       44/44    0.0832     0.086     0.419    0.0651     0.653        22     0.3420.63540.68180.65580.5187
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   25/99       44/44    0.0821    0.0766     0.438    0.0621     0.658        21     0.2840.62530.69810.66770.5250
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   26/99       44/44    0.0805    0.0736     0.418    0.0583      0.63        54     0.3130.62950.71520.68530.5511
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   27/99       44/44    0.0807    0.0749     0.411     0.059     0.626        45     0.3490.61210.71410.68640.5484
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   28/99       44/44    0.0747    0.0748     0.392    0.0538     0.595        11     0.5020.65440.70450.67980.5545
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   29/99       44/44    0.0753    0.0724       0.4    0.0547     0.602        39     0.4050.63100.73490.70700.5807
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   30/99       44/44    0.0753    0.0644     0.372    0.0494     0.561        18     0.3050.66750.70110.67710.5522
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   31/99       44/44     0.077    0.0715     0.388    0.0495     0.586        46      0.310.64340.72690.70210.5832
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   32/99       44/44    0.0726    0.0695     0.375     0.046     0.563        13      0.290.70440.71150.69170.5676
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   33/99       44/44    0.0695    0.0707       0.4    0.0461     0.586        32     0.3430.67720.71040.68820.5814
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   34/99       44/44    0.0706    0.0712     0.373    0.0412     0.556        14     0.3220.66580.74800.72110.6177
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   35/99       44/44    0.0702     0.066     0.357    0.0403     0.533        17     0.3870.69380.72030.70110.5964
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   36/99       44/44    0.0672     0.065      0.35    0.0377     0.519        16     0.2870.69650.74470.71800.6155
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   37/99       44/44     0.068    0.0592     0.353    0.0377     0.518        15     0.3780.69340.75410.73160.6402
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   38/99       44/44    0.0669    0.0619      0.36     0.034     0.523        21     0.2860.70190.75410.73200.6398
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   39/99       44/44    0.0675    0.0676     0.359    0.0355      0.53        19     0.3740.74180.73940.72390.6227
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   40/99       44/44    0.0659    0.0657     0.346     0.034     0.512        11     0.2870.72270.75940.73960.6429
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   41/99       44/44     0.062    0.0598     0.339     0.034     0.495         5     0.2890.66810.75740.73060.6456
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   42/99       44/44    0.0624    0.0602     0.341    0.0308     0.495        18     0.3380.71330.76860.74810.6597
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   43/99       44/44    0.0649    0.0565     0.344    0.0297     0.495        11     0.3420.71980.75110.73120.6333
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   44/99       44/44    0.0643    0.0595      0.35    0.0308     0.505         6     0.2950.71910.77160.74780.6542
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   45/99       44/44    0.0603    0.0605     0.309    0.0289     0.458        25     0.2990.71180.77530.75260.6589
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   46/99       44/44    0.0596    0.0549     0.323    0.0262     0.464         7     0.3190.69200.76780.73990.6484
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   47/99       44/44    0.0625     0.058     0.334    0.0241     0.478         9     0.2970.71340.78090.75940.6633
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   48/99       44/44     0.061    0.0571     0.326    0.0249     0.469        29     0.2870.68370.76670.74090.6562
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   49/99       44/44    0.0594    0.0642     0.326    0.0255     0.475        31     0.3170.70260.78180.76090.6755
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   50/99       44/44    0.0587    0.0556     0.312    0.0237      0.45        20     0.2930.71120.75620.73960.6583
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   51/99       44/44    0.0552    0.0543     0.335    0.0241     0.469        24     0.2840.71710.76440.74480.6554
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   52/99       44/44    0.0586    0.0527     0.331    0.0251     0.467        40     0.3180.69750.76560.74340.6519
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   53/99       44/44    0.0585    0.0516     0.321    0.0229     0.455        18     0.2830.74130.77970.76250.6751
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   54/99       44/44    0.0551    0.0542      0.31    0.0225     0.441        44     0.3480.68250.77910.75570.6792
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   55/99       44/44     0.056    0.0516     0.308     0.021     0.437        36     0.2930.71760.78110.76120.6590
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   56/99       44/44    0.0567     0.048     0.311    0.0202     0.436         9     0.3130.73000.77170.75360.6775
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   57/99       44/44    0.0529    0.0577     0.296    0.0212     0.428         6      0.340.74190.78080.76260.6682
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   58/99       44/44    0.0549    0.0519     0.304    0.0194     0.431         7     0.3030.73310.79210.76900.6709
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   59/99       44/44    0.0564    0.0486     0.307    0.0172     0.429         8     0.3480.71580.79710.77350.6949
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   60/99       44/44    0.0528    0.0515     0.307    0.0162     0.427        18     0.3010.70350.75710.73640.6466
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   61/99       44/44    0.0523    0.0494     0.293    0.0164     0.411        16     0.3180.73230.77610.75880.6637
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   62/99       44/44    0.0535    0.0495     0.293    0.0167     0.413        15     0.2860.71920.78590.76200.6660
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   63/99       44/44    0.0534    0.0495     0.303    0.0171     0.423        17     0.3340.71530.78150.75720.6743
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   64/99       44/44    0.0541    0.0494     0.295    0.0178     0.416        32     0.3310.70600.78790.76400.6841
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   65/99       44/44    0.0529    0.0483     0.282    0.0178     0.401         8     0.3720.71910.78540.76320.6894
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   66/99       44/44    0.0522    0.0488     0.288    0.0149     0.404        17      0.330.72890.79320.77230.6777
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   67/99       44/44    0.0511    0.0441     0.295    0.0171     0.408        17     0.3710.74950.78630.76950.6875
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   68/99       44/44    0.0509    0.0453     0.284    0.0159     0.396        13     0.3830.72370.80660.78300.6975
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   69/99       44/44    0.0515    0.0475     0.293    0.0144     0.406        36     0.2930.72010.79230.76620.6900
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   70/99       44/44    0.0513     0.049     0.289    0.0149     0.405        11     0.3170.73240.80950.78530.7075
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   71/99       44/44    0.0509    0.0434     0.282    0.0136      0.39         9     0.2890.73870.78990.76650.6748
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   72/99       44/44    0.0508    0.0437     0.276    0.0136     0.384        13     0.3020.73770.78200.76120.6774
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   73/99       44/44    0.0509     0.047     0.293    0.0144     0.406        14     0.3150.74060.78360.76130.6716
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   74/99       44/44    0.0484    0.0411     0.276    0.0146      0.38        16     0.2870.70670.78850.76450.6952
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   75/99       44/44    0.0493    0.0442      0.28    0.0119     0.386        15     0.2820.72040.80220.77820.6827
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   76/99       44/44    0.0505     0.043     0.294    0.0118       0.4        46     0.2840.73340.76970.75110.6667
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   77/99       44/44    0.0455    0.0437     0.262    0.0119     0.363         5     0.3610.74770.79690.77470.6857
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   78/99       44/44    0.0465    0.0436     0.276    0.0105     0.376        38     0.3360.75250.77920.76240.6627
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   79/99       44/44    0.0482    0.0425     0.283    0.0119     0.385        36     0.3180.77410.80790.79350.7170
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   80/99       44/44    0.0486    0.0433     0.256    0.0116     0.359        12     0.3880.76890.79700.78130.6877
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   81/99       44/44    0.0459    0.0375     0.267    0.0106     0.361        12     0.2930.77180.81030.79460.7100
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   82/99       44/44    0.0444    0.0366     0.262   0.00904     0.352        21     0.3170.76970.80530.78830.7037
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   83/99       44/44    0.0432    0.0355     0.248   0.00965     0.337        16     0.2910.77320.80850.79280.7054
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   84/99       44/44    0.0458    0.0354     0.249   0.00943      0.34        21     0.3340.77890.81650.80010.7120
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   85/99       44/44     0.042    0.0352     0.242   0.00893     0.328        26      0.330.77100.82370.80430.7225
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   86/99       44/44    0.0424    0.0342     0.237    0.0101     0.324        18     0.2840.76800.81110.79260.7107
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   87/99       44/44    0.0417     0.035     0.246   0.00994     0.333        31     0.3440.77150.81270.79570.7117
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   88/99       44/44    0.0416    0.0356     0.248    0.0106     0.336        26     0.3030.77190.81270.79630.7205
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   89/99       44/44    0.0409    0.0328     0.223   0.00904     0.306        21     0.3610.77050.81250.79580.7097
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   90/99       44/44    0.0414    0.0338     0.239   0.00894     0.323        17     0.3080.76210.81100.79280.7109
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   91/99       44/44    0.0416     0.033     0.234   0.00892     0.318        21     0.2850.77640.81350.79670.7197
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   92/99       44/44     0.042    0.0338     0.231   0.00938     0.316        29     0.3030.76440.81650.79830.7180
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   93/99       44/44    0.0411    0.0346     0.232   0.00819     0.316        14     0.3770.75740.80850.79040.7082
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   94/99       44/44    0.0425    0.0331     0.242   0.00756     0.325        35     0.2940.77210.81000.79290.7121
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   95/99       44/44    0.0423    0.0353     0.244   0.00987     0.332        31     0.3640.77150.81070.79280.7079
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   96/99       44/44    0.0403     0.033     0.231   0.00769     0.312        21      0.290.76140.80950.79240.7073
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   97/99       44/44    0.0421    0.0346     0.244   0.00863     0.329        39     0.3610.77380.80750.79140.7080
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   98/99       44/44    0.0394    0.0345     0.224   0.00896     0.307        32     0.3620.76920.81150.79360.7030
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+   99/99       44/44     0.042    0.0349     0.244   0.00775     0.329        31     0.3250.76800.81620.79750.7106
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+best_old_mAP=0.7225,best_new_mAP=0.8043
+ÁªìÊùüËÆ≠ÁªÉÔºåÂΩìÂâçÊó∂Èó¥Ôºö2019-03-18 21:22:37
