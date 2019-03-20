@@ -57,7 +57,7 @@ def detect(
     # Get classes and colors
     classes = load_classes(parse_data_cfg('cfg/coco.data')['names'])
     colors = [[random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)] for _ in range(len(classes))]
-    fps_time=[]
+    fps_time=[]#加入FPS计算代码
     for i, (path, img, im0) in enumerate(dataloader):
         t = time.time()
         if webcam:

@@ -200,7 +200,7 @@ def train(
             os.system('cp ' + latest + ' ' + best_new_mAP_model)
         # Write epoch results
         with open('results.txt', 'a') as file:
-            file.write(s + '%-.4f' * 4 % (P,R,new_mAP,old_mAP) + '\n')
+            file.write(s + '%10.4f' * 4 % (P,R,new_mAP,old_mAP) + '\n')
             file.write(('%8s%12s' + '%10s' * 11 + '\n') % ('Epoch', 'Batch', 'xy', 'wh', 'conf', 'cls', 't_loss', 'nTargets', 'time', 'P', 'R', 'new_mAP', 'old_mAP'))
     print('best_old_mAP=%-.4f,best_new_mAP=%-.4f'%(best_old_mAP,best_new_mAP))#输出最好的map(old/new)
     endtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
