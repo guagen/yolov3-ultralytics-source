@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="df1204fe-1175-40db-aeed-851f29edac99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/results.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/parse_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/parse_config.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +19,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1606">
+            <state relative-caret-position="540">
               <caret line="178" column="21" selection-start-line="178" selection-start-column="14" selection-end-line="178" selection-end-column="21" />
               <folding>
                 <element signature="e#1576#2409#0" />
@@ -27,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2240">
-              <caret line="194" column="3" selection-start-line="194" selection-start-column="3" selection-end-line="194" selection-end-column="3" />
+            <state relative-caret-position="437">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -39,17 +40,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/detect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1044">
-              <caret line="119" column="15" lean-forward="true" selection-start-line="119" selection-start-column="15" selection-end-line="119" selection-end-column="15" />
+            <state relative-caret-position="2553">
+              <caret line="119" column="15" selection-start-line="119" selection-start-column="15" selection-end-line="119" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utils/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="271" column="35" selection-start-line="271" selection-start-column="35" selection-end-line="271" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/models.py">
+        <entry file="file://$PROJECT_DIR$/cfg/yolov3-deconv.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="805">
-              <caret line="41" column="45" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="45" />
+            <state relative-caret-position="868">
+              <caret line="628" column="7" selection-start-line="628" selection-start-column="1" selection-end-line="628" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -57,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cfg/yolov3.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
+            <state relative-caret-position="16261">
               <caret line="707" column="1" selection-start-line="707" selection-start-column="1" selection-end-line="707" selection-end-column="1" />
             </state>
           </provider>
@@ -101,6 +111,7 @@
       <find>fps</find>
       <find>augment</find>
       <find>strip_optimizer_from_checkpoint</find>
+      <find>deconv</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -112,10 +123,12 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/cfg/yolov3.cfg" />
         <option value="$PROJECT_DIR$/detect.py" />
-        <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/utils/utils.py" />
         <option value="$PROJECT_DIR$/utils/plot_results.py" />
         <option value="$PROJECT_DIR$/../../tools/Curve drawing/plot_results.py" />
+        <option value="$PROJECT_DIR$/utils/parse_config.py" />
+        <option value="$PROJECT_DIR$/utils/models.py" />
+        <option value="$PROJECT_DIR$/train.py" />
       </list>
     </option>
   </component>
@@ -150,7 +163,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../deconv" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -165,7 +178,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.plot_results (1)">
+  <component name="RunManager" selected="Python.train">
     <configuration name="detect" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="yolov3-ultralytics-source" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -273,10 +286,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train" />
         <item itemvalue="Python.plot_results (1)" />
         <item itemvalue="Python.plot_results" />
         <item itemvalue="Python.detect" />
-        <item itemvalue="Python.train" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -298,55 +311,30 @@
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14640592" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1231501" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905483" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49418604" weight="0.3873979" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49524313" weight="0.36872813" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.9075053" visible="true" weight="0.28471413" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32905483" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947146" weight="0.32905483" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50581396" side_tool="true" visible="true" weight="0.3873979" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.09249471" side_tool="true" visible="true" weight="0.28471413" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32905483" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/train.py</url>
-          <line>116</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="lr0" />
-        <watch expression="total_time" />
-        <watch expression="file_data[206]" />
-      </configuration>
-    </watches-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../mxnet-dssd-master/train.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4117">
           <caret line="179" column="35" selection-start-line="179" selection-start-column="35" selection-end-line="179" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/yolov3.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="707" column="1" selection-start-line="707" selection-start-column="1" selection-end-line="707" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -363,16 +351,6 @@
           <caret line="63" column="36" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="36" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
-          <caret line="178" column="21" selection-start-line="178" selection-start-column="14" selection-end-line="178" selection-end-column="21" />
-          <folding>
-            <element signature="e#1576#2409#0" />
           </folding>
         </state>
       </provider>
@@ -398,13 +376,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/detect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1044">
-          <caret line="119" column="15" lean-forward="true" selection-start-line="119" selection-start-column="15" selection-end-line="119" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -412,16 +383,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/plot_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/plot_results.py" />
     <entry file="file://$PROJECT_DIR$/utils/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -429,13 +391,6 @@
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="805">
-          <caret line="41" column="45" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -449,10 +404,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/detect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2553">
+          <caret line="119" column="15" selection-start-line="119" selection-start-column="15" selection-end-line="119" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/yolov3.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16261">
+          <caret line="707" column="1" selection-start-line="707" selection-start-column="1" selection-end-line="707" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/parse_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/yolov3-deconv.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="628" column="7" selection-start-line="628" selection-start-column="1" selection-end-line="628" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="178" column="21" selection-start-line="178" selection-start-column="14" selection-end-line="178" selection-end-column="21" />
+          <folding>
+            <element signature="e#1576#2409#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2240">
-          <caret line="194" column="3" selection-start-line="194" selection-start-column="3" selection-end-line="194" selection-end-column="3" />
+        <state relative-caret-position="437">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="271" column="35" selection-start-line="271" selection-start-column="35" selection-end-line="271" selection-end-column="35" />
         </state>
       </provider>
     </entry>

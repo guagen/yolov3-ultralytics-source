@@ -49,6 +49,24 @@ def create_modules(module_defs,chose_cls_loss='softmax'):
             upsample = Upsample(scale_factor=int(module_def['stride']))
             modules.add_module('upsample_%d' % i, upsample)
 
+#######################################################
+        elif module_def['type'] == 'deconv':
+            # upsample = nn.Upsample(scale_factor=int(module_def['stride']), mode='nearest')  # WARNING: deprecated
+            bn = int(module_def['batch_normalize'])
+            filters = int(module_def['filters'])
+            kernel_size = int(module_def['size'])
+            modules.add_module('deconv_%d' % i, nn.ConvTranspose2d(in_channels=output_filters[-1],
+                                                                 out_channels=filters,
+                                                                 kernel_size=kernel_size,
+                                                                 stride=int(module_def['stride']),
+                                                                 padding=pad,
+                                                                 bias=not bn))
+            if bn:
+                modules.add_module('batch_norm_%d' % i, nn.BatchNorm2d(filters))
+            if module_def['activation'] == 'leaky':
+                modules.add_module('leaky_%d' % i, nn.LeakyReLU(0.1))
+########################################################
+
         elif module_def['type'] == 'route':
             layers = [int(x) for x in module_def['layers'].split(',')]
             filters = sum([output_filters[i + 1 if i > 0 else i] for i in layers])
@@ -241,7 +259,7 @@ class Darknet(nn.Module):
 
         for i, (module_def, module) in enumerate(zip(self.module_defs, self.module_list)):
             mtype = module_def['type']
-            if mtype in ['convolutional', 'upsample', 'maxpool']:
+            if mtype in ['convolutional', 'upsample', 'maxpool', 'deconv']:
                 x = module(x)
             elif mtype == 'route':
                 layer_i = [int(x) for x in module_def['layers'].split(',')]

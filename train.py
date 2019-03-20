@@ -7,12 +7,12 @@ from utils.utils import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=100, help='number of epochs')
-parser.add_argument('--batch-size', type=int, default=12, help='size of each image batch')
+parser.add_argument('--batch-size', type=int, default=1, help='size of each image batch')
 parser.add_argument('--lr', type=int, default=0.001, help='learning rate')
 parser.add_argument('--img-size', type=int, default=512, help='pixels')
 parser.add_argument('--chose_cls_loss', type=str, default='focalloss',help='chose which loss function in cls')  # 可选的有logistic，softmax，focalloss
+parser.add_argument('--UPorDE', type=str, default='deconv',help='chose upsample or deconv')#选择上采样还是反卷积
 parser.add_argument('--resume', action='store_true', help='resume training flag')
-parser.add_argument('--cfg', type=str, default='cfg/yolov3.cfg', help='cfg file path')
 parser.add_argument('--data-cfg', type=str, default='cfg/coco.data', help='coco.data file path')
 parser.add_argument('--multi-scale', action='store_true', help='random image sizes per batch 320 - 608')
 parser.add_argument('--accumulated-batches', type=int, default=1, help='number of batches before optimizer step')
@@ -20,7 +20,7 @@ parser.add_argument('--var', type=float, default=0, help='test variable')
 opt = parser.parse_args()
 
 def train(
-        cfg,
+        UPorDE,
         data_cfg,
         img_size=512,
         resume=False,
@@ -49,6 +49,10 @@ def train(
     train_path = parse_data_cfg(data_cfg)['train']
 
     # Initialize model
+    if UPorDE=='upsample':
+        cfg='cfg/yolov3.cfg'#如果是上采样那么选取原生的yolov3.cfg
+    elif UPorDE=='deconv':
+        cfg='cfg/yolov3-deconv.cfg'#如果是反卷积那么选取定制的yolov3-deconv.cfg
     model = Darknet(cfg, img_size,chose_cls_loss)
 
     # Get dataloader
@@ -108,7 +112,7 @@ def train(
         print('开始训练，当前时间：%s\n' % (begtime))
         file.write('---\n')
         file.write('开始训练，当前时间：%s\n'%(begtime))
-        file.write('学习率=%s，图片尺寸=%s，分类loss=%s\n' % (lr0,img_size,chose_cls_loss))
+        file.write('学习率=%s，图片尺寸=%s，分类loss=%s，UPorDE=%s\n' % (lr0,img_size,chose_cls_loss,UPorDE))
         file.write(('%8s%12s' + '%10s' * 11+'\n') % ('Epoch', 'Batch', 'xy', 'wh', 'conf', 'cls', 't_loss', 'nTargets', 'time','P','R','new_mAP','old_mAP'))
 
     best_old_mAP=0
@@ -214,7 +218,7 @@ if __name__ == '__main__':
     init_seeds()
 
     train(
-        opt.cfg,
+        opt.UPorDE,
         opt.data_cfg,
         img_size=opt.img_size,
         resume=opt.resume,

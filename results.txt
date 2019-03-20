@@ -204,4 +204,17 @@
    99/99       44/44     0.042    0.0349     0.244   0.00775     0.329        31     0.325      0.7680      0.8162      0.7975      0.7106
    Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
 best_old_mAP=0.7225,best_new_mAP=0.8043
-缁撴潫璁粌锛屽綋鍓嶆椂闂达細2019-03-18 21:22:37
+缁撴潫璁粌锛屽綋鍓嶆椂闂达細2019-03-18 21:22:37---
+开始训练，当前时间：2019-03-20 10:38:35
+---
+开始训练，当前时间：2019-03-20 10:39:10
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-20 10:50:07
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-20 10:53:45
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
