@@ -52,7 +52,7 @@ def train(
     if UPorDE=='upsample':
         cfg='cfg/yolov3.cfg'#如果是上采样那么选取原生的yolov3.cfg
     elif UPorDE=='deconv':
-        cfg='cfg/yolov3-deconv.cfg'#如果是反卷积那么选取定制的yolov3-deconv.cfg
+        cfg='cfg/yolov3-deconv-small.cfg'#如果是反卷积那么选取定制的yolov3-deconv.cfg,yolov3-deconv-small为进一步的定制版，去掉了YOLO第一层
     model = Darknet(cfg, img_size,chose_cls_loss)
 
     # Get dataloader
