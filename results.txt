@@ -219,6 +219,7 @@ best_old_mAP=0.7225,best_new_mAP=0.8043
 学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
    Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
 ---
+<<<<<<< HEAD
 开始训练，当前时间：2019-03-21 19:36:52
 学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
    Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
@@ -228,5 +229,20 @@ best_old_mAP=0.7225,best_new_mAP=0.8043
    Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
 ---
 开始训练，当前时间：2019-03-21 19:46:44
+=======
+开始训练，当前时间：2019-03-20 11:15:06
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-20 11:15:42
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-20 11:21:14
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-20 11:58:49
+>>>>>>> 15af613b95ff2e8ae02586e3c34f4e88ff3b7b13
 学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
    Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
