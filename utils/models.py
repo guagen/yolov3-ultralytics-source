@@ -190,8 +190,10 @@ class YOLOLayer(nn.Module):
 
                 #lcls = (k / 4) * CrossEntropyLoss(p_cls[mask], torch.argmax(tcls, 1))#此为原始的交叉熵损失函数，也就是softmax
                 #lcls = (k * 10) * BCEWithLogitsLoss(p_cls[mask], tcls.float())#此为原始的logistics损失函数，一开始是k*10
-
-                lcls=(k / 4) *cls_loss(p_cls[mask], torch.argmax(tcls, 1))
+                if self.chose_cls_loss=='logistic':
+                    lcls = BCEWithLogitsLoss(p_cls[mask], tcls.float())#del (k / 4)
+                else :
+                    lcls=cls_loss(p_cls[mask], torch.argmax(tcls, 1))#del (k / 4)
             else:
                 FT = torch.cuda.FloatTensor if p.is_cuda else torch.FloatTensor
                 lxy, lwh, lcls, lconf = FT([0]), FT([0]), FT([0]), FT([0])
