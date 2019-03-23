@@ -10,8 +10,8 @@ parser.add_argument('--epochs', type=int, default=100, help='number of epochs')
 parser.add_argument('--batch-size', type=int, default=12, help='size of each image batch')
 parser.add_argument('--lr', type=int, default=0.001, help='learning rate')
 parser.add_argument('--img-size', type=int, default=512, help='pixels')
-parser.add_argument('--chose_cls_loss', type=str, default='logistic',help='chose which loss function in cls')  # 可选的有logistic，softmax，focalloss
-parser.add_argument('--UPorDE', type=str, default='upsample',help='chose upsample or deconv')#选择上采样还是反卷积
+parser.add_argument('--chose_cls_loss', type=str, default='focalloss',help='chose which loss function in cls')  # 可选的有logistic，softmax，focalloss
+parser.add_argument('--UPorDE', type=str, default='deconv',help='chose upsample or deconv')#选择上采样还是反卷积
 parser.add_argument('--resume', action='store_true', help='resume training flag')
 parser.add_argument('--data-cfg', type=str, default='cfg/coco.data', help='coco.data file path')
 parser.add_argument('--multi-scale', action='store_true', help='random image sizes per batch 320 - 608')
@@ -52,7 +52,7 @@ def train(
     if UPorDE=='upsample':
         cfg='cfg/yolov3.cfg'#如果是上采样那么选取原生的yolov3.cfg
     elif UPorDE=='deconv':
-        cfg='cfg/yolov3-deconv-small.cfg'#如果是反卷积那么选取定制的yolov3-deconv.cfg,yolov3-deconv-small为进一步的定制版，去掉了YOLO第一层
+        cfg='cfg/yolov3-deconv.cfg'#如果是反卷积那么选取定制的yolov3-deconv.cfg,yolov3-deconv-small为进一步的定制版，去掉了YOLO第一层
     model = Darknet(cfg, img_size,chose_cls_loss)
 
     # Get dataloader
