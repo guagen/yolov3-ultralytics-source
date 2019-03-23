@@ -1,4 +1,0 @@
----
-开始训练，当前时间：2019-03-23 10:42:11
-学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
-   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
