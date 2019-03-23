@@ -138,7 +138,7 @@ class YOLOLayer(nn.Module):
             self.nG = int(img_size / stride)  # number grid points
             create_grids(self, img_size, self.nG)
 
-    def forward(self, p, img_size, targets=None, var=None):
+    def forward(self, p, img_size, targets=None, var=None,epoch=0):
         if ONNX_EXPORT:
             bs, nG = 1, self.nG  # batch size, grid size
         else:
@@ -167,8 +167,10 @@ class YOLOLayer(nn.Module):
                 cls_loss=nn.CrossEntropyLoss()
             elif(self.chose_cls_loss=='logistic'):
                 cls_loss=nn.BCEWithLogitsLoss()
-            elif(self.chose_cls_loss=='focalloss'):
+            elif(self.chose_cls_loss=='focalloss' and epoch>=50):
                 cls_loss=FocalLoss(class_num=self.nC, gamma=2)#新加入focalloss, 此处的gamma等于2是默认值
+            elif(self.chose_cls_loss=='focalloss' and epoch<50):
+                cls_loss = nn.CrossEntropyLoss()
 
             # Get outputs
             p_conf = p[..., 4]  # Conf
@@ -252,7 +254,7 @@ class Darknet(nn.Module):
         self.loss_names = ['loss', 'xy', 'wh', 'conf', 'cls', 'nT']
         self.losses = []
 
-    def forward(self, x, targets=None, var=0):
+    def forward(self, x, targets=None, var=0,epoch=0):
         self.losses = defaultdict(float)
         is_training = targets is not None
         img_size = x.shape[-1]
@@ -274,7 +276,7 @@ class Darknet(nn.Module):
                 x = layer_outputs[-1] + layer_outputs[layer_i]
             elif mtype == 'yolo':
                 if is_training:  # get loss
-                    x, *losses = module[0](x, img_size, targets, var)
+                    x, *losses = module[0](x, img_size, targets, var,epoch)
                     for name, loss in zip(self.loss_names, losses):
                         self.losses[name] += loss
                 else:  # get detections

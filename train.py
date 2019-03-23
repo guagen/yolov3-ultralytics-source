@@ -7,7 +7,7 @@ from utils.utils import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=100, help='number of epochs')
-parser.add_argument('--batch-size', type=int, default=12, help='size of each image batch')
+parser.add_argument('--batch-size', type=int, default=1, help='size of each image batch')
 parser.add_argument('--lr', type=int, default=0.001, help='learning rate')
 parser.add_argument('--img-size', type=int, default=512, help='pixels')
 parser.add_argument('--chose_cls_loss', type=str, default='focalloss',help='chose which loss function in cls')  # 可选的有logistic，softmax，focalloss
@@ -151,7 +151,7 @@ def train(
                     g['lr'] = lr
 
             # Compute loss, compute gradient, update parameters
-            loss = model(imgs.to(device), targets, var=var)
+            loss = model(imgs.to(device), targets, var=var,epoch=epoch)
             loss.backward()
 
             # accumulate gradient for x batches before optimizing
