@@ -1,0 +1,20 @@
+---
+开始训练，当前时间：2019-03-24 11:57:35
+学习率=0.001，图片尺寸=512，分类loss=logistic，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-24 11:58:18
+学习率=0.001，图片尺寸=512，分类loss=softmax，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-24 11:58:44
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-24 11:59:02
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP
+---
+开始训练，当前时间：2019-03-24 11:59:25
+学习率=0.001，图片尺寸=512，分类loss=focalloss，UPorDE=deconv
+   Epoch       Batch        xy        wh      conf       cls    t_loss  nTargets      time         P         R   new_mAP   old_mAP

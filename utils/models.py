@@ -163,14 +163,7 @@ class YOLOLayer(nn.Module):
         if targets is not None:
             MSELoss = nn.MSELoss()#选择边框预测loss
             BCEWithLogitsLoss = nn.BCEWithLogitsLoss()
-            if(self.chose_cls_loss=='softmax'):
-                cls_loss=nn.CrossEntropyLoss()
-            elif(self.chose_cls_loss=='logistic'):
-                cls_loss=nn.BCEWithLogitsLoss()
-            elif(self.chose_cls_loss=='focalloss' and epoch>=50):
-                cls_loss=FocalLoss(class_num=self.nC, gamma=2)#新加入focalloss, 此处的gamma等于2是默认值
-            elif(self.chose_cls_loss=='focalloss' and epoch<50):
-                cls_loss = nn.CrossEntropyLoss()
+            CrossEntropyLoss=nn.CrossEntropyLoss()
 
             # Get outputs
             p_conf = p[..., 4]  # Conf
@@ -194,13 +187,18 @@ class YOLOLayer(nn.Module):
                 #lcls = (k * 10) * BCEWithLogitsLoss(p_cls[mask], tcls.float())#此为原始的logistics损失函数，一开始是k*10
                 if self.chose_cls_loss=='logistic':
                     lcls = BCEWithLogitsLoss(p_cls[mask], tcls.float())#del (k / 4)
-                else :
-                    lcls=cls_loss(p_cls[mask], torch.argmax(tcls, 1))#del (k / 4)
+                elif self.chose_cls_loss=='softmax':
+                    lcls=CrossEntropyLoss(p_cls[mask], torch.argmax(tcls, 1))#del (k / 4)
+                elif self.chose_cls_loss == 'focalloss':
+                    lcls = FocalLoss(class_num=self.nC, gamma=2)(p_cls[mask], torch.argmax(tcls, 1))  # del (k / 4)
             else:
                 FT = torch.cuda.FloatTensor if p.is_cuda else torch.FloatTensor
                 lxy, lwh, lcls, lconf = FT([0]), FT([0]), FT([0]), FT([0])
 
-            lconf = (k * 64) * BCEWithLogitsLoss(p_conf, mask.float())
+            if self.chose_cls_loss == 'focalloss':
+                lconf = (k * 64) * FocalLoss_confidence(class_num=self.nC, gamma=2)(p_conf, mask.float())
+            else:
+                lconf = (k * 64) * BCEWithLogitsLoss(p_conf, mask.float())
             # Sum loss components
             loss = lxy + lwh + lconf + lcls
 
